@@ -69,4 +69,8 @@ class UserController extends RestController {
     	$result = DBUtil::delete($this->userModel, array('user_id' => $user_id));
     	$this->response(array('status'=>$result),'json');
     }
+    
+    public function upload(){
+    	
+    }
 }

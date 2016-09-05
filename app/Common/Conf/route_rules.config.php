@@ -7,5 +7,6 @@ return array(
 		array('api/users','Admin/User/user_post','',array('method'=>'post')),
 		array('api/users/:id','Admin/User/user_put','',array('method'=>'put')),
 		array('api/users/:id','Admin/User/user_delete','',array('method'=>'delete')),
+		array('api/users/upload','Admin/User/upload'),
 	)
 );

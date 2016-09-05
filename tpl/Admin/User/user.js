@@ -134,6 +134,7 @@ app.controller('UserFormCtroller', function($scope, $state, $stateParams, UserSe
 
 //用户上传Ctroller
 app.controller('UserUploadCtroller', function($scope, Upload) {
+	$scope.uploadImg = '';
 	$scope.submit = function() {
 		if ($scope.form.file.$valid && $scope.file) {
 	    	$scope.upload($scope.file);
@@ -143,9 +144,7 @@ app.controller('UserUploadCtroller', function($scope, Upload) {
         $scope.fileInfo = file;
         Upload.upload({
             //服务端接收
-            url: 'Ashx/UploadFile.ashx',
-            //上传的同时带的参数
-            data: { 'username': $scope.username },
+            url: globalConfig.API.URL + 'users/upload',
             file: file
         }).progress(function (evt) {
             //进度条

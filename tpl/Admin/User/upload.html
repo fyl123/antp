@@ -1,0 +1,4 @@
+<div ng-include="'tpl/Admin/Public/header.html'"></div>
+<img src="{{uploadImg}}"/> 
+<div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*" accept="image/*" ngf-max-size="20MB" ngf-min-height="100">Select</div>
+<button type="submit" ng-click="submit()">submit</button> {{fileInfo.name}}<br />{{fileInfo.size}} 
