@@ -164,9 +164,10 @@ app.controller('UserUploadCtroller', function($scope,FileUploader) {
     };
     //单个文件上传成功回调
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
+    	console.log(fileItem);
     	if(status == 200){
     		if(response.status){
-    			$scope.uploadImg = response.img;
+    			fileItem.file.uploadImg = response.img;
     		}
     	}
     };

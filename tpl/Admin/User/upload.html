@@ -18,7 +18,7 @@
             <tbody>
                 <tr ng-repeat="item in uploader.queue">
                     <td><strong>{{ item.file.name }}</strong></td>
-                    <td><img src="{{uploadImg}}" class="img-thumbnail" width="60px" height="60px"/></td>
+                    <td><img src="{{item.file.uploadImg}}" class="img-thumbnail" width="60px" height="60px"/></td>
                     <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
                     <td ng-show="uploader.isHTML5">
                         <div class="progress" style="margin-bottom: 0;">
