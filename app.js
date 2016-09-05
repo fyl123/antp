@@ -1,6 +1,6 @@
 "use strict";
 //开启一个AngularJS应用，应用名称为：antp
-var app = angular.module("antp",["ui.router","ngResource","ngFileUpload","tm.pagination"]);
+var app = angular.module("antp",["ui.router","ngResource","angularFileUpload","tm.pagination"]);
 //使用ui.router的路由功能，通过config预先配置好访问url、该url对应的视图模板以及控制器等信息
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	//启用HTML5模式的路由，该模式下会去除URL中的#号

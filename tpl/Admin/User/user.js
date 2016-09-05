@@ -132,32 +132,59 @@ app.controller('UserFormCtroller', function($scope, $state, $stateParams, UserSe
     };
 });
 
-//用户上传Ctroller
-app.controller('UserUploadCtroller', function($scope, Upload) {
+//文件上传Ctroller
+app.controller('UserUploadCtroller', function($scope,FileUploader) {
 	$scope.uploadImg = '';
-	$scope.submit = function() {
-		if ($scope.form.file.$valid && $scope.file) {
-	    	$scope.upload($scope.file);
-	    }
-	};
-	$scope.upload = function (file) {
-        $scope.fileInfo = file;
-        Upload.upload({
-            //服务端接收
-            url: globalConfig.API.URL + 'users/upload',
-            file: file
-        }).progress(function (evt) {
-            //进度条
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progess:' + progressPercentage + '%' + evt.config.file.name);
-        }).success(function (data, status, headers, config) {
-            //上传成功
-            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-            $scope.uploadImg = data;
-        }).error(function (data, status, headers, config) {
-            //上传失败
-            console.log('error status: ' + status);
-        });
+	var uploader = $scope.uploader = new FileUploader({
+        url: globalConfig.API.URL + 'users/upload'
+    });
+	//选择文件失败回调
+    uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+        console.info('onWhenAddingFileFailed', item, filter, options);
+    };
+    //选择文件成功回调
+    uploader.onAfterAddingFile = function(fileItem) {
+        
+    };
+    //选择文件成功回调
+    uploader.onAfterAddingAll = function(addedFileItems) {
+        
+    };
+    //单个文件上传之前回调
+    uploader.onBeforeUploadItem = function(item) {
+        
+    };
+    //单个文件上传进度
+    uploader.onProgressItem = function(fileItem, progress) {
+        
+    };
+    //队列文件上传进度
+    uploader.onProgressAll = function(progress) {
+        
+    };
+    //单个文件上传成功回调
+    uploader.onSuccessItem = function(fileItem, response, status, headers) {
+    	if(status == 200){
+    		if(response.status){
+    			$scope.uploadImg = response.img;
+    		}
+    	}
+    };
+    //单个文件上传失败回调
+    uploader.onErrorItem = function(fileItem, response, status, headers) {
+        console.info('onErrorItem', fileItem, response, status, headers);
+    };
+    //单个文件取消回调
+    uploader.onCancelItem = function(fileItem, response, status, headers) {
+        
+    };
+    //单个文件上传完毕回调
+    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+        
+    };
+    //取消所有文件回调
+    uploader.onCompleteAll = function() {
+        
     };
 });
 

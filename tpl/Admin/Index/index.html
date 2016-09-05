@@ -14,8 +14,7 @@
 	    <script type="text/javascript" src="/public/js/jquery-1.10.1.min.js"></script>
 	    <script type="text/javascript" src="/public/js/jquery-ui.min.js"></script>
 	    <script type="text/javascript" src="/public/js/tm.pagination.js"></script>
-	    <script type="text/javascript" src="/public/js/ng-file-upload.min.js"></script>
-	    <script type="text/javascript" src="/public/js/ng-file-upload-shim.min.js"></script>
+	    <script type="text/javascript" src="/public/js/angular-file-upload.min.js"></script>
 	    <script type="text/javascript" src="/public/js/layer/layer.js"></script>
 	    <script type="text/javascript" src="/config.js"></script>
 	    <script type="text/javascript" src="/app.js"></script>

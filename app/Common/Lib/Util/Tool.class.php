@@ -139,22 +139,17 @@ class Tool {
 	 * @param array $thumb:缩略图选项
 	 * @return mixed
 	 */
-	public static function uploadFile($savePath,$maxSize=-1,$allowExts=array(),$thumb=array()){
-		import('Org.Net.UploadFile');
+	public static function uploadFile($savePath,$maxSize=0,$allowExts=array(),$thumb=array()){
 		$upload = new \Think\Upload();// 实例化上传类
 		$upload->maxSize  = $maxSize ;// 设置附件上传大小
-		$upload->allowExts  = $allowExts;// 设置附件上传类型
-		$upload->savePath =  $savePath;// 设置附件上传目录,
-		if ($thumb['thumb']) {
-			$upload->thumb = $thumb['thumb'];
-			$upload->thumbPrefix = $thumb['prefix'];
-			$upload->thumbMaxWidth = $thumb['width'];
-			$upload->thumbMaxHeight = $thumb['height'];
-		}		
-		if(!$upload->upload()) {// 上传错误提示错误信息
-			return $upload->getErrorMsg();
+		$upload->exts  = $allowExts;// 设置附件上传类型
+		$upload->rootPath = $savePath; // 设置附件上传目录
+		$upload->subName = ''; //子目录创建方式
+		$result = $upload->upload();
+		if(!$result) {// 上传错误提示错误信息
+			return $upload->getError();
 		}else{
-			return $upload->getUploadFileInfo();
+			return $result;
 		}
 	}
 	

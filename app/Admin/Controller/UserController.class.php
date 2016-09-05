@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller\RestController;
 use Common\Lib\Util\DBUtil;
+use Common\Lib\Util\Tool;
 
 class UserController extends RestController {
 	
@@ -71,6 +72,12 @@ class UserController extends RestController {
     }
     
     public function upload(){
-    	
+    	$result = array('status'=>false,'img'=>'');
+    	$file = Tool::uploadFile(C('UPLOAD_DIR'));
+    	if ($file['file']) {
+    		$result['status'] = true;
+    		$result['img'] = C('UPLOAD_DIR').$file['file']['savename'];
+    	}
+    	$this->response($result,'json');
     }
 }
