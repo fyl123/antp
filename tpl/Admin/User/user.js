@@ -188,4 +188,3 @@ app.controller('UserUploadCtroller', function($scope,FileUploader) {
     };
 });
 
-
